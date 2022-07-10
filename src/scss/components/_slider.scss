@@ -1,0 +1,87 @@
+@use "./mixins/fluid-size" as size;
+
+.slider {
+  // Компенсируем верхний внутренний отступ
+  // для карточек с эффектом traslateY при наведении -5px
+  padding-top: 5px;
+  margin-top: -5px;
+  // Делаем границы слайдера невидимыми
+  overflow: visible;
+
+  @media only screen and (max-width: 780px) {
+    // Отключаем компенсацию
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .swiper-slide {
+    > .card-service {
+      height: 484px;
+
+      @media only screen and (max-width: 580px) {
+        height: 380px;
+      }
+    }
+  }
+}
+
+.slider + .slider-controls {
+  @include size.calculate(margin-top, 320px, 1380px, 30px, 40px);
+}
+
+.slider-controls {
+  display: flex;
+  align-items: center;
+
+  > * + * {
+    margin-left: 14px;
+  }
+}
+
+.slider-btn {
+  position: static;
+  box-sizing: content-box;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(178, 208, 203, 1);
+  border-radius: 100px;
+  opacity: 0.5;
+  transition: 0.3s;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+
+  &:hover {
+    background-color: rgba(178, 208, 203, 0.3);
+    border-color: transparent;
+    opacity: 1;
+  }
+
+  &::after {
+    content: '';
+    width: 19px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='19' height='16' viewBox='0 0 19 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.7071 7.29289C19.0976 7.68342 19.0976 8.31658 18.7071 8.70711L12.3431 15.0711C11.9526 15.4616 11.3195 15.4616 10.9289 15.0711C10.5384 14.6805 10.5384 14.0474 10.9289 13.6569L16.5858 8L10.9289 2.34315C10.5384 1.95262 10.5384 1.31946 10.9289 0.928932C11.3195 0.538408 11.9526 0.538408 12.3431 0.928932L18.7071 7.29289ZM0 7L18 7V9L0 9L0 7Z' fill='%2300A38A'/%3E%3C/svg%3E%0A");
+    background-size: cover;
+  }
+
+  &[class*="prev"] {
+    transform: rotate(-180deg);
+  }
+
+  &.black {
+    border-color: #B2D0CB;
+
+    &:hover {
+      border-color: transparent;
+    }
+
+    &::after {
+      background-image: url("data:image/svg+xml,%3Csvg width='19' height='16' viewBox='0 0 19 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.7071 7.29289C19.0976 7.68342 19.0976 8.31658 18.7071 8.70711L12.3431 15.0711C11.9526 15.4616 11.3195 15.4616 10.9289 15.0711C10.5384 14.6805 10.5384 14.0474 10.9289 13.6569L16.5858 8L10.9289 2.34315C10.5384 1.95262 10.5384 1.31946 10.9289 0.928932C11.3195 0.538408 11.9526 0.538408 12.3431 0.928932L18.7071 7.29289ZM0 7L18 7V9L0 9L0 7Z' fill='%23B2D0CB'/%3E%3C/svg%3E%0A");
+    }
+  }
+}

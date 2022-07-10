@@ -1,0 +1,20 @@
+@use "./mixins/fluid-size" as size;
+
+.aside {
+  margin-left: 26px;
+
+  > * + * {
+    @include size.calculate(margin-top, 320px, 1380px, 10px, 20px);
+  }
+
+  // Закрепляем блок в сайдбаре при скроле
+  [data-position="sticky"] {
+    position: sticky;
+    top: 20px;
+  }
+
+  // Убираем левый отступ у сайдбара
+  @media only screen and (max-width: 880px) {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,231 @@
+$legacy_support_for_ie: false !default;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd,
+button,
+input,
+select,
+textarea {
+  margin: 0;
+}
+
+ul,
+ol,
+menu {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style-type: none;
+}
+
+html {
+	font-kerning: normal;
+	text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	min-height: 100vh;
+	scroll-behavior: smooth;
+	text-rendering: optimizeSpeed;
+	line-height: 1.5;
+}
+
+a {
+	background: transparent;
+
+	&:focus {
+		outline: thin dotted;
+	}
+
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+
+	&:not([class]) {
+		text-decoration-skip-ink: auto;
+	}
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+small {
+	font-size: 80%;
+}
+
+@if $legacy_support_for_ie {
+	menu,
+	ol,
+	ul {
+		margin: 1em 0;
+		padding: 0 0 0 40px;
+	}
+
+	form {
+		margin: 0;
+	}
+}
+
+nav {
+	ul,
+	menu,
+	ol {
+		@if $legacy_support_for_ie {
+			list-style-image: none;
+		}
+	}
+}
+
+img {
+	max-width: 100%;
+	display: block;
+	border: 0;
+	@if $legacy_support_for_ie {
+		-ms-interpolation-mode: bicubic;
+	}
+}
+
+svg:not(:root) {
+	overflow: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+	vertical-align: baseline;
+	@if $legacy_support_for_ie {
+		*vertical-align: middle;
+	}
+}
+
+button, input {
+	line-height: normal;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+	@if $legacy_support_for_ie {
+		*overflow: visible;
+	}
+}
+
+button[disabled],
+input[disabled] {
+	cursor: default;
+}
+
+button, input {
+	&::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+}
+
+button, a {
+	padding: 0;
+	background-color: transparent;
+}
+
+textarea {
+	overflow: auto;
+	vertical-align: top;
+	resize: none;
+}
+
+table, th, td {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+input {
+	&[type="search"] {
+		-webkit-appearance: textfield;
+		-moz-box-sizing: content-box;
+		-webkit-box-sizing: content-box;
+		box-sizing: content-box;
+
+		&::-webkit-search-cancel-button,
+		&::-webkit-search-decoration {
+			-webkit-appearance: none;
+		}
+	}
+
+	&[type="checkbox"],
+	&[type="radio"] {
+		box-sizing: border-box;
+		padding: 0;
+		@if $legacy_support_for_ie {
+			*height: 13px;
+			*width: 13px;
+		}
+	}
+}
+
+legend {
+	display: table;
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+
+	+ * {
+			clear: both;
+	}
+}
+
+fieldset {
+	border: 0;
+	padding: 0.01em 0 0 0;
+	margin: 0;
+	min-width: 0;
+}
+
+body:not(:-moz-handler-blocked) fieldset {
+	display: table-cell;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитают их не использовать */
+@media (prefers-reduced-motion: reduce) {
+	* {
+	  animation-duration: 0.01ms !important;
+	  animation-iteration-count: 1 !important;
+	  transition-duration: 0.01ms !important;
+	  scroll-behavior: auto !important;
+	}
+}

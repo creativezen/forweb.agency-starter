@@ -1,0 +1,55 @@
+@use "./mixins/fluid-size" as size;
+
+.article {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-transform: none;
+  }
+
+  > * + h2 {
+    @include size.calculate(margin-top, 320px, 1380px, 20px, 60px);
+  }
+
+  > * + h3 {
+    @include size.calculate(margin-top, 320px, 1380px, 20px, 40px);
+  }
+
+  > * + h4 {
+    @include size.calculate(margin-top, 320px, 1380px, 18px, 36px);
+  }
+
+  > * + h5 {
+    @include size.calculate(margin-top, 320px, 1380px, 16px, 28px);
+  }
+
+  > * + h6 {
+    @include size.calculate(margin-top, 320px, 1380px, 12px, 20px);
+  }
+
+  > * + ul,
+  > * + ol {
+    @include size.calculate(margin-top, 320px, 1380px, 20px, 26px);
+  }
+
+  > * + p,
+  > * + blockquote,
+  > * + .blockquote,
+  > * + img {
+    @include size.calculate(margin-top, 320px, 1380px, 14px, 20px);
+  }
+
+  h2 + *,
+  h2 + blockquote,
+  h2 + .blockquote {
+    @include size.calculate(margin-top, 320px, 1380px, 16px, 30px);
+  }
+
+  img {
+    border-radius: 10px;
+  }
+}

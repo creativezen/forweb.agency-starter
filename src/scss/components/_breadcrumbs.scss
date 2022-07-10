@@ -1,0 +1,74 @@
+@use "./mixins/fluid-size" as size;
+
+// breadcrumbs standart
+// ===============================================
+// .breadcrumbs {
+//   display: flex;
+//   align-items: center;
+//   @include size.calculate(font-size, 320px, 1380px, 14px, 16px);
+
+//   > * + * {
+//     margin-left: 12px;
+//     position: relative;
+
+//     &::before {
+//       margin-right: 12px;
+//       content: '/';
+//       font-family: var(--font-text);
+//       color: inherit;
+//     }
+//   }
+
+//   > *:not(:last-child) {
+//     opacity: 0.5;
+//     transition: opacity ease-in-out 0.3s;
+
+//     &:hover {
+//       opacity: 1;
+//     }
+//   }
+
+//   &:last-child {
+//     color: var(--black);
+//   }
+// }
+
+// breadcrumbs for WordPress / rankMathSeo plug-in
+// ===============================================
+.hero__header {
+  nav,
+  nav[class*="breadcrumbs"],
+  nav[aria-label*="breadcrumbs"] {
+    > * {
+      display: flex;
+      align-items: center;
+      @include size.calculate(font-size, 320px, 1380px, 14px, 16px);
+
+      > *:not(.last) {
+        color: var(--brand-yellow);
+      }
+
+      > * + *:not(.last):not(a) {
+        margin-left: 12px;
+        position: relative;
+      }
+
+      > *:not(.last) {
+        opacity: 0.5;
+        transition: opacity ease-in-out 0.3s;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .last {
+        color: var(--white);
+      }
+
+      .separator {
+        margin-right: 12px;
+      }
+    }
+  }
+}

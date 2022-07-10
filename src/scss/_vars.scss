@@ -1,0 +1,52 @@
+:root {
+
+  // Typography
+  --font-text: "Montserrat", sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-title: 'Merriweather', serif;
+
+  // Layout container
+  --max-width: 1920px;
+  --min-widht: 320px;
+  --content-width: 1220px;
+  --container-offset: 40px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+  // Brand color
+  --brand-black: #193826;
+  --brand-yellow: #DBBA7E;
+  --brand-green: #007765;
+
+  //All color
+  --black: #002C27;
+  --white: #FFFFFF;
+  --black-bg: #141D1C;
+  --black-text: #2C2C2C;
+  --black-soc: #182625;
+  --green-bg: #1B2E2C;
+  --green-link: #00A38A;
+
+  --gray: #9D9898;
+  --gray4: #C1C1C1;
+  --gray3: #F0F4F3;
+  --gray2: #D6D6D6;
+  --gray-bg: #F9F9F9;
+
+  --beige: #F9F9F9;
+  --beige-bg: #F8F1E5;
+
+  --bord: #485F5D;
+  --bord2: #313131;
+
+  //Special colors
+  --spec-red: red;
+
+  // Gradients
+  --gradient: linear-gradient(180deg, #00FFD8 0%, #02BB9F 0%, #007765 100%);
+  --gradient2: linear-gradient(252.33deg, #FFFFFF 0%, #1F6660 0%, #142D27 100%);
+  --gradient-baige: linear-gradient(99.44deg, #DBBA7E 0%, #F2D49D 100%);
+  --gradient-yellow: radial-gradient(117.49% 50% at 50% 50%, #FFE6A2 0%, #FCD066 100%);
+
+  // Animation
+  --fast: 0.3s;
+  --transition: var(--fast) ease-in-out;
+}

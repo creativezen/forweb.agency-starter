@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="page" lang="ru">
+
+  @include('./partials/head.html', {
+    "title": 'Страница 404 | Ольга Терентьева — эксперт по операциям с недвижимостью',
+    })
+
+  <body class="page__body">
+
+    @include('./partials/sprite-svg.html')
+    @include('./partials/header.html')
+
+    <main class="main">
+
+      <section class="section stream">
+        <div class="container">
+          <div class="section__header">
+            <h2 class="title">Ошибка 404...</h2>
+          </div>
+          <div class="section__body">
+            <p class="title-caption">К сожалению такая страница не найдена.</p>
+          </div>
+          <div class="section__footer">
+            <a class="btn" href="#">Вернуться на главную</a>
+          </div>
+        </div>
+      </section>
+
+      @include('./partials/modal.html')
+    </main>
+
+    @include('./partials/footer.html')
+
+  </body>
+</html>

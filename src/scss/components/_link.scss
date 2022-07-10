@@ -1,0 +1,60 @@
+@use "../mixins/fluid-size" as size;
+@use "../mixins/disable-mob-hover" as mobile;
+
+.link-prototype {
+  text-decoration: none;
+}
+
+.link-arrow {
+  $parent: &;
+  @extend .link-prototype;
+  display: flex;
+  align-items: center;
+  @include size.calculate(font-size, 320px, 1380px, 13px, 14px);
+  font-weight: 600;
+  color: var(--brand-green);
+  transition: color ease-in-out 0.3s;
+
+  @include mobile.hover {
+    color: var(--brand-black);
+
+    #{$parent}__icon {
+      transform: translateX(5px);
+    }
+  }
+
+  &__text {
+    flex-shrink: 0;
+    transition: color ease-in-out 0.3s;
+  }
+
+  &__icon {
+    @include size.calculate(margin-left, 320px, 1380px, 10px, 16px);
+    transition: transform ease-in-out 0.3s;
+
+    use {
+      fill: var(--brand-green);
+      transition: color ease-in-out 0.3s;
+    }
+  }
+
+  &.yellow {
+    #{$parent}__text {
+      color: var(--brand-yellow);
+    }
+
+    #{$parent}__icon use {
+      fill: var(--brand-yellow);
+    }
+
+    @include mobile.hover {
+      #{$parent}__text {
+        color: var(--white);
+      }
+
+      #{$parent}__icon use {
+        fill: var(--white);
+      }
+    }
+  }
+}

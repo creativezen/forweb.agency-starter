@@ -1,0 +1,33 @@
+<div class="forweb-modal js-modal">
+
+  <!-- Консультация -->
+  <div class="forweb-modal__container" role="dialog" aria-modal="true" data-forweb-target="modal-consulting">
+    <div class="forweb-modal__content">
+      <form class="form js-form">
+        <div class="form__header">
+          <span class="form__close js-close" aria-label="Закрыть модальное окно">
+            <svg class="close-svg" viewbox="0 0 24 24"><use xlink:href="#icon-close"></use></svg>
+          </span>
+        </div>
+        <fieldset class="form__body">
+          <legend class="form__legend"><h3 class="title-form white">Бесплатная консультация</h3></legend>
+          <div class="form__body_item">
+            <input class="input input-name" type="text" name="name-call" placeholder="Укажите ваше имя" required>
+          </div>
+          <div class="form__body_item">
+            <input class="input input-tel" type="tel" name="tel-call" placeholder="+7(ХХХ) ХХХ-ХХ-ХХ" required>
+          </div>
+        </fieldset>
+        <fieldset class="form__footer">
+          <label class="label label--agree" for="agree-consulting">
+            <input class="checkbox input-agree" id="agree-consulting" type="checkbox" required>
+            <span>Даю согласие на обработку и использование персональных данных согласно 152-ФЗ, с <a href="#" target="_blank">правилами политики обработки персональных данных</a> ознакомлен</span>
+          </label>
+          <button type="submit" class="btn block">Отправить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+</div>
+

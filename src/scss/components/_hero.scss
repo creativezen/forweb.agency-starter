@@ -1,0 +1,65 @@
+@use "./mixins/fluid-size" as size;
+
+.hero {
+  @include size.calculate(padding-top, 320px, 1380px, 60px, 120px);
+  @include size.calculate(padding-bottom, 320px, 1380px, 60px, 120px);
+  background-color: var(--black-bg);
+  color: var(--white);
+
+  &__header + &__body,
+  &__header + &__footer,
+  &__body + &__footer {
+    @include size.calculate(margin-top, 320px, 1380px, 30px, 60px);
+  }
+
+  &__header {
+    // хлебные крошки
+    nav p {
+      overflow: auto;
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      /* Hide scrollbar for IE, Edge and Firefox */
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+
+      * {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  &__body {
+    > * {
+      display: block;
+      width: 100%;
+      color: inherit;
+      text-transform: none;
+    }
+
+    > * + * {
+      @include size.calculate(margin-top, 320px, 1380px, 30px, 40px);
+    }
+
+    *:not(ul):not(ol) {
+      @include size.calculate(font-size, 320px, 1380px, 18px, 26px);
+      font-weight: 500;
+    }
+
+    ul, ol {
+      @include size.calculate(font-size, 320px, 1380px, 16px, 22px);
+    }
+  }
+
+  .breadcrumbs > :last-child {
+    color: var(--brand-yellow);
+  }
+
+  .breadcrumbs + *,
+  nav + *,
+  nav[class*="breadcrumbs"] + *,
+  nav[aria-label*="breadcrumbs"] + * {
+    margin-top: 40px;
+  }
+}

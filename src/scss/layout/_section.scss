@@ -1,0 +1,52 @@
+@use "../mixins/fluid-size" as size;
+
+// section
+// =============================
+.section {
+
+  &__header,
+  &__body,
+  &__footer {
+    position: relative;
+  }
+
+  &__header + &__body,
+  &__header + &__footer {
+    @include size.calculate(margin-top, 320px, 1380px, 40px, 60px);
+  }
+
+  &__body + &__footer,
+  &__body + &__body {
+    @include size.calculate(margin-top, 320px, 1380px, 30px, 60px);
+  }
+
+  &__header {
+    .title {
+      // Компенсируем верхний и нижний оступ из-за высоты строки заголовка
+      @include size.calculate(margin-top, 320px, 1380px, -10px, -22px);
+      @include size.calculate(margin-bottom, 320px, 1380px, 0px, -5px);
+    }
+  }
+
+  &__body {
+
+    > h2 {
+      @include size.calculate(font-size, 320px, 1380px, 20px, 26px);
+      text-transform: none;
+    }
+
+    > * + ul {
+      @include size.calculate(margin-top, 320px, 1380px, 10px, 20px);
+    }
+  }
+
+  &.stream {
+    // Вертикальные отступы между секциями
+    @include size.calculate(padding-top, 320px, 1380px, 60px, 120px);
+    @include size.calculate(padding-bottom, 320px, 1380px, 60px, 120px);
+
+    &[data-stream-up="no"] {
+      padding-top: 0 !important;
+    }
+  }
+}

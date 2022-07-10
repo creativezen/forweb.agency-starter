@@ -1,0 +1,546 @@
+@use "../mixins/fluid-size" as size;
+@use "../layout/container";
+
+// banner-proto
+// ================================
+.banner-proto {
+  position: relative;
+  width: 90%;
+  max-width: 1600px;
+  margin: 0 auto;
+  @include size.calculate(border-radius, 320px, 1380px, 10px, 20px);
+  background-color: var(--white);
+
+  @media only screen and (max-width: 1380px) {
+    width: 95%;
+  }
+
+  @media only screen and (max-width: 780px) {
+    overflow: hidden;
+  }
+
+  &::after {
+    content: '';
+    width: 99%;
+    height: 100%;
+    display: block;
+    margin: auto;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+  }
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-image: url("../img/svg/banner-pattern.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__container {
+    @extend .container;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    @include size.calculate(padding-top, 320px, 1380px, 40px, 100px);
+    @include size.calculate(padding-bottom, 320px, 1380px, 40px, 100px);
+    z-index: 2;
+  }
+
+  &__body {
+
+    > * + * {
+      @include size.calculate(margin-top, 320px, 1380px, 20px, 30px);
+    }
+
+    a:not([class]) {
+      text-decoration: underline;
+    }
+  }
+}
+
+// banner-list
+// ================================
+.banner-list {
+  @extend .banner-proto;
+
+  @media only screen and (max-width: 980px) {
+    overflow: hidden;
+  }
+
+  &__container {
+    @extend .banner-proto__container;
+    align-items: center;
+
+    @media only screen and (max-width: 880px) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__cta {
+    flex: 1 0 60%;
+
+    .title + .text {
+      @include size.calculate(margin-top, 320px, 1380px, 30px, 40px);
+    }
+
+    .text {
+      @include size.calculate(font-size, 320px, 1380px, 18px, 20px);
+      font-weight: 500;
+    }
+
+    .btn {
+      @include size.calculate(margin-top, 320px, 1380px, 20px, 40px);
+    }
+  }
+
+  &__list {
+    flex: 1 0 40%;
+    padding-left: 40px;
+
+    @media only screen and (max-width: 880px) {
+      flex: auto;
+      width: 100%;
+      padding-left: 0;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__mockup {
+    flex: 1 0 40%;
+    width: 40%;
+    max-width: 260px;
+    height: 100%;
+    margin-bottom: -100px;
+
+    @media only screen and (max-width: 880px) {
+      display: none;
+    }
+  }
+}
+
+// banner-expert
+// ================================
+.banner-expert {
+  @extend .banner-proto;
+
+  // Прячем наследуемые свойства
+  &::after,
+  &::before {
+    width: 0;
+    height: 0;
+  }
+
+  // Прячем наследуемые свойства
+  &::before {
+    background-image: none;
+  }
+
+  &__container {
+    @extend .banner-proto__container;
+
+    @media only screen and (max-width: 880px) {
+      display: block;
+    }
+  }
+
+  &__about-author {
+    flex: 1 0 70%;
+    max-width: 710px;
+
+    @media only screen and (max-width: 1080px) {
+      max-width: 660px;
+    }
+
+    .pre-title {
+      font-family: var(--font-title);
+      @include size.calculate(font-size, 320px, 1380px, 20px, 24px);
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    > .pre-title + * {
+      margin-top: 20px;
+    }
+
+    > .title + * {
+      @include size.calculate(margin-top, 320px, 1380px, 20px, 40px);
+    }
+  }
+
+  &__video {
+    position: absolute;
+    flex: 1 0 30%;
+    width: 30%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+
+    @media only screen and (max-width: 880px) {
+      position: static;
+      width: 100%;
+      margin-bottom: -70px;
+    }
+
+    .photo {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 540px;
+
+      @media only screen and (max-width: 1080px) {
+        width: 380px;
+      }
+
+      @media only screen and (max-width: 880px) {
+        position: static;
+        @include size.calculate(margin-top, 320px, 880px, 20px, 40px);
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .btn-play {
+      position: absolute;
+      bottom: 100px;
+      left: 0;
+
+      @media only screen and (max-width: 880px) {
+        left: 100px;
+      }
+
+      &::after {
+        width: 140px;
+        display: block;
+        margin-top: 10px;
+        content: attr(aria-label);
+        font-family: var(--font-text);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.3;
+      }
+    }
+  }
+}
+
+// banner-quote
+// ================================
+.banner-checklist {
+  @extend .banner-proto;
+
+  // Прячем наследуемые свойства
+  &::after,
+  &::before {
+    width: 0;
+    height: 0;
+  }
+
+  // Прячем наследуемые свойства
+  &::before {
+    background-image: none;
+  }
+
+  &__container {
+    @extend .banner-proto__container;
+    display: block;
+  }
+
+  &__header {
+    max-width: 50%;
+
+    @media only screen and (max-width: 780px) {
+      max-width: none;
+      width: 100%;
+    }
+
+    > .title + * {
+      @include size.calculate(margin-top, 320px, 1380px, 20px, 40px);
+    }
+
+    .text {
+      @include size.calculate(font-size, 320px, 1380px, 20px, 24px);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+
+  &__mockup {
+    display: block;
+    position: absolute;
+    @include size.calculate(max-width, 1080px, 1600px, 500px, 700px);
+    top: -100px;
+    right: 40px;
+
+    @media only screen and (max-width: 980px) {
+      right: -30px;
+    }
+
+    @media only screen and (max-width: 780px) {
+      position: static;
+      max-width: none;
+      width: 100%;
+    }
+
+    img {
+      @media only screen and (max-width: 680px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  &__body {
+    @include size.calculate(margin-top, 320px, 1380px, 40px, 70px);
+
+    @media only screen and (max-width: 780px) {
+      margin-top: 0;
+    }
+  }
+
+  .grid-child[data-grid="6"] {
+    @media only screen and (max-width: 780px) {
+      grid-column: 12 span;
+    }
+  }
+}
+
+// banner-checklist
+// ================================
+.banner-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include size.calculate(padding, 320px, 1380px, 40px, 80px);
+  @include size.calculate(border-radius, 320px, 1380px, 16px, 20px);
+  background-color: var(--brand-yellow);
+
+  > * + * {
+    margin-top: 20px;
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  &__title {
+    @include size.calculate(font-size, 320px, 1380px, 32px, 52px);
+    font-weight: 700;
+    font-style: italic;
+    text-align: center;
+    text-transform: none;
+  }
+
+  &__text {
+    @include size.calculate(font-size, 320px, 1380px, 18px, 20px);
+    font-weight: 500;
+  }
+}
+
+// banner-question
+// ================================
+.banner-question {
+  @extend .banner-proto;
+
+  &__container {
+    @extend .banner-proto__container;
+
+    @media only screen and (max-width: 880px) {
+      flex-direction: column;
+    }
+  }
+
+  &__cta {
+    flex: auto;
+    max-width: 660px;
+
+    @media only screen and (max-width: 1080px) {
+      max-width: 640px;
+    }
+
+    @media only screen and (max-width: 880px) {
+      max-width: none;
+      width: 100%;
+    }
+
+    p {
+      @include size.calculate(font-size, 320px, 1380px, 20px, 26px);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    > .title + * {
+      @include size.calculate(margin-top, 320px, 1380px, 20px, 30px);
+    }
+
+    .btn {
+      @include size.calculate(margin-top, 320px, 1380px, 20px, 30px);
+    }
+  }
+
+  &__photo {
+    position: relative;
+
+    &_img {
+      position: absolute;
+      display: block;
+      bottom: -100px;
+      right: -90px;
+      width: 630px;
+
+      @media only screen and (max-width: 1080px) {
+        width: 400px;
+      }
+
+      @media only screen and (max-width: 880px) {
+        width: 100%;
+        position: static;
+        @include size.calculate(margin-top, 320px, 880px, 20px, 40px);
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: -70px;
+      }
+
+      @media only screen and (max-width: 680px) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// banner-form
+// ================================
+.banner-form {
+  @extend .banner-proto;
+  background-color: #000000;
+  overflow: hidden;
+
+  // переопределяем наследуемые свойства от banner-proto
+  &::before {
+    background-image: none;
+    background-color: rgba(17, 46, 43, 0.78);
+  }
+
+  // переопределяем наследуемые свойства от banner-proto
+  &::after {
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../img/home/home-form-bg.jpg');
+    background-size: cover;
+  }
+
+  &__cta {
+    font-size: 24px;
+    font-weight: 500px;
+    line-height: 1.4;
+    text-align: center;
+    color: var(--white);
+
+    > .title + * {
+      @include size.calculate(margin-top, 320px, 1380px, 20px, 30px);
+    }
+  }
+
+  &__cta + &__form {
+    @include size.calculate(margin-top, 320px, 1380px, 30px, 40px);
+  }
+
+  &__container {
+    @extend .banner-proto__container;
+    display: block;
+  }
+
+  .grid-child[data-grid="4"] {
+    @media only screen and (max-width: 780px) {
+      grid-column: 12 span;
+    }
+  }
+}
+
+// banner-course
+// ================================
+.banner-course {
+  @extend .banner-proto;
+
+  // Прячем наследуемые свойства
+  &::after,
+  &::before {
+    width: 0;
+    height: 0;
+  }
+
+  // Прячем наследуемые свойства
+  &::before {
+    background-image: none;
+  }
+
+  &__container {
+    @extend .banner-proto__container;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__body {
+    @extend .banner-proto__body;
+    max-width: 60%;
+
+    @media only screen and (max-width: 680px) {
+      max-width: none;
+      width: 100%;
+    }
+
+    h3 {
+      text-transform: none;
+    }
+  }
+
+  &__header + &__body {
+    @include size.calculate(margin-top, 320px, 1380px, 30px, 40px);
+  }
+
+  &__mockup {
+    position: absolute;
+    max-width: 290px;
+    bottom: -60px;
+    right: 100px;
+
+    @media only screen and (max-width: 980px) {
+      right: 60px;
+    }
+
+    @media only screen and (max-width: 880px) {
+      right: 20px;
+    }
+
+    @media only screen and (max-width: 780px) {
+      max-width: 240px;
+    }
+
+    @media only screen and (max-width: 680px) {
+      position: static;
+      @include size.calculate(margin-top, 320px, 1380px, 30px, 40px);
+      margin-bottom: -70px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

@@ -1,0 +1,112 @@
+@use "./mixins/font-face" as font;
+@use "./mixins/fluid-size" as size;
+
+// Montserrat
+// =====================================
+@include font.font-face("Montserrat", "Montserrat-Regular", 400, normal);
+@include font.font-face("Montserrat", "Montserrat-Medium", 500, normal);
+@include font.font-face("Montserrat", "Montserrat-SemiBold", 600, normal);
+
+// Merriweather
+// =====================================
+@include font.font-face("Merriweather", "Merriweather-Bold", 700, normal);
+@include font.font-face("Merriweather", "Merriweather-BoldItalic", 700, italic);
+
+// lightgallery
+// =====================================
+@include font.font-face("lightgallery", "lg", 700, normal);
+
+// Typography
+// =====================================
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: -0.02;
+  color: inherit;
+}
+
+h1 {
+  @include size.calculate(font-size, 320px, 1380px, 40px, 72px);
+}
+
+h2 {
+  @include size.calculate(font-size, 320px, 1380px, 26px, 50px);
+}
+
+h3 {
+  @include size.calculate(font-size, 320px, 1380px, 18px, 24px);
+}
+
+h4 {
+  @include size.calculate(font-size, 320px, 1380px, 18px, 20px);
+}
+
+h5 {
+  @include size.calculate(font-size, 320px, 1380px, 16px, 18px);
+}
+
+h6 {
+  @include size.calculate(font-size, 320px, 1380px, 14px, 16px);
+}
+
+blockquote {
+  @include size.calculate(border-radius, 320px, 1380px, 6px, 10px);
+  @include size.calculate(padding, 320px, 1380px, 20px, 40px);
+  border: 1px solid var(--gray2);
+  @include size.calculate(font-size, 320px, 1380px, 16px, 20px);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+.title {
+  @extend h2;
+}
+
+.title-hero {
+  @include size.calculate(font-size, 320px, 1380px, 46px, 72px);
+  line-height: 1.2;
+}
+
+.title-hero + * {
+  @include size.calculate(margin-top, 320px, 1380px, 20px, 40px);
+}
+
+.title-category {
+  @extend h1;
+  @include size.calculate(font-size, 320px, 1380px, 20px, 24px);
+  text-transform: none;
+}
+
+.title-category + * {
+  @include size.calculate(margin-top, 320px, 1380px, 16px, 24px);
+}
+
+.title-small {
+  @extend h5;
+  @include size.calculate(font-size, 320px, 1380px, 16px, 18px);
+}
+
+.title-form {
+  @extend h3;
+  @include size.calculate(font-size, 320px, 1380px, 26px, 30px);
+  line-height: 1.4;
+}
+
+.title-caption {
+  font-family: var(--font-text);
+  @include size.calculate(font-size, 320px, 1380px, 18px, 20px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.02;
+}
