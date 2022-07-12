@@ -1,3 +1,19 @@
 <header class="header">
-	<div class="container"></div>
+	<div class="container">
+		<div class="header__content">
+			<a class="header__logo" href="#">
+				<img src="./img/logo/logo.svg" alt="" />
+			</a>
+			<div class="header__burger js-menu-open">
+				<img src="./img/icons/icon-menu-button.svg" alt="" />
+			</div>
+			<div class="header__nav">
+				@include('./nav.html')
+			</div>
+			<div class="header__contact">
+				<a href="tel:+79197722000" class="header__contact-tel">+7 (919) 772-20-00</a>
+				<span class="header__contact_call" role="button" aria-pressed="false" data-forweb-path="modal-consulting">Консультация</span>
+			</div>
+		</div>
+	</div>
 </header>

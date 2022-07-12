@@ -3,4 +3,29 @@
 
 .header {
 
+   $parent: &;
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav {
+    flex: auto;
+  }
+
+  &__nav + &__contact {
+    margin-left: 60px;
+  }
+
+  &__contact {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  &__burger {
+    cursor: pointer;
+  }
 }

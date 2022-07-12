@@ -1,3 +1,5 @@
+import Scroll from "../utilities/Scroll"
+
 export default class ForwebModal {
 
   constructor(options, mainStage) {
@@ -28,7 +30,8 @@ export default class ForwebModal {
       '[tabindex]:not([tabindex^="-"])'
     ]
 
-    this._fixBlocks = document.querySelectorAll('.fix-block')
+    // this._fixBlocks = document.querySelectorAll('.fix-block')
+    this.scroll = new Scroll
     this.init()
   }
 
@@ -94,7 +97,7 @@ export default class ForwebModal {
     document.body.style.scrollBehavior = 'auto';
     document.documentElement.style.scrollBehavior = 'auto';
 
-    this.disableScroll();
+    this.scroll.disable()
 
     this.modalContainer.classList.add('forweb-modal-open');
     this.modalContainer.classList.add(this.animation);
@@ -114,7 +117,7 @@ export default class ForwebModal {
       this.modal.classList.remove('is-open');
       this.modalContainer.classList.remove('forweb-modal-open');
 
-      this.enableScroll();
+      this.scroll.enable()
 
       document.body.style.scrollBehavior = 'auto';
       document.documentElement.style.scrollBehavior = 'auto';
@@ -127,13 +130,6 @@ export default class ForwebModal {
         this.reOpen = false;
         this.open();
       }
-    }
-  }
-
-  success() {
-    if (this.modalSuccess) {
-      this._nextContainer = document.querySelector('.js-modal-success')
-      this.open('modal-success')
     }
   }
 
@@ -160,38 +156,10 @@ export default class ForwebModal {
     }
   }
 
-  disableScroll() {
-    let pagePosition = window.scrollY;
-    this.lockPadding();
-    document.body.classList.add('disable-scroll');
-    document.body.dataset.position = pagePosition;
-    document.body.style.top = -pagePosition + 'px';
-  }
-
-  enableScroll() {
-    let pagePosition = parseInt(document.body.dataset.position, 10);
-    this.unlockPadding();
-    document.body.style.top = 'auto';
-    document.body.classList.remove('disable-scroll');
-    window.scroll({
-      top: pagePosition,
-      left: 0
-    });
-    document.body.removeAttribute('data-position');
-  }
-
-  lockPadding() {
-    let paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
-    this._fixBlocks.forEach((el) => {
-      el.style.paddingRight = paddingOffset;
-    });
-    document.body.style.paddingRight = paddingOffset;
-  }
-
-  unlockPadding() {
-    this._fixBlocks.forEach((el) => {
-      el.style.paddingRight = '0px';
-    });
-    document.body.style.paddingRight = '0px';
+  success() {
+    if (this.modalSuccess) {
+      this._nextContainer = document.querySelector('.js-modal-success')
+      this.open('modal-success')
+    }
   }
 }

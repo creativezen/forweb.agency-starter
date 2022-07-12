@@ -23,10 +23,6 @@
 
   @include mobile.hover {
     --x: 100%;
-
-    // &::after {
-    //   bottom: 0;
-    // }
   }
 
   &:focus {

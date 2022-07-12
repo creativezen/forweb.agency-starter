@@ -2,10 +2,12 @@ import Inputmask from "inputmask"
 
 export const InputMask = () => {
   const telInputArray = Array.from(document.querySelectorAll('input[type="tel"]'))
-  telInputArray?.forEach(input => {
-    const inputMask = new Inputmask('+7 (999) 999-99-99')
-    inputMask.mask(input)
-  })
+  if (telInputArray.length) {
+    telInputArray.forEach(input => {
+      const inputMask = new Inputmask('+7 (999) 999-99-99')
+      inputMask.mask(input)
+    })
+  }
 }
 
 export const SendForm = function() {

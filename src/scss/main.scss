@@ -6,6 +6,7 @@
 @use "./vendor";
 
 // components
+@use './components/nav';
 @use './components/button';
 @use './components/form';
 @use './components/card';

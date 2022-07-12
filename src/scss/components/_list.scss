@@ -2,7 +2,12 @@
 
 // list
 // ==========================
-ul:not([class]):not(.header__menu > ul):not(.footer__menu > ul):not(.footer__soc > ul) {
+ul
+:not([class])
+:not(.nav-header__menu > ul)
+:not(.footer__menu > ul)
+:not(.footer__soc > ul) {
+
   color: inherit;
 
   &[data-col="2"] {

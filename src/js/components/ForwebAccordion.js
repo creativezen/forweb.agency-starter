@@ -1,4 +1,4 @@
-import { AnimationHeight } from "../services/ForwebAnimation"
+import { AnimationHeight } from "../utilities/ForwebAnimation"
 
 export default class ForwebAccordion {
 
